@@ -44,11 +44,6 @@ public class InscripcionDAO {
 
 				throw new RuntimeException();
 
-			} else {
-
-				// muestro el nuevo ID
-				System.out.println("Nuevo ID: " + newId + " " + PreparedStatement.RETURN_GENERATED_KEYS);
-
 			}
 
 		} catch (Exception e) {
