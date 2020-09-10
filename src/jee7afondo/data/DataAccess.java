@@ -24,7 +24,7 @@ public class DataAccess {
 			Class.forName(driver);
 
 			// agrego shutdown
-			Thread t = new Thread();
+			Thread t = new ShutdownHookImple();
 			Runtime.getRuntime().addShutdownHook(t);
 
 		} catch (Exception e) {
@@ -69,6 +69,7 @@ public class DataAccess {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public static <T> T getObject(String objName) {
 
 		try {
