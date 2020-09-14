@@ -57,6 +57,7 @@ public class TestServlet extends HttpServlet {
 		String password = request.getParameter("pwd");
 
 		pw.println("BIENVENIDO " + user.toUpperCase());
+		pw.println("Password: " + password);
 	
 	}
 

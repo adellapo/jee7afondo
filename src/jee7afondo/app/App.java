@@ -76,6 +76,9 @@ public class App {
 		dto.setIdCurso(idCurso);
 		dto.setIdFormaPago(idFormaPago);
 
+		// cierro
+		sc.close();
+		
 		return dto;
 
 	}

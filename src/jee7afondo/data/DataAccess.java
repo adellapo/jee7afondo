@@ -59,7 +59,7 @@ public class DataAccess {
 
 		} catch (Exception e) {
 
-			System.out.println(e.getMessage());
+			System.out.println("ERROR: " + e.getMessage());
 			e.printStackTrace();
 			throw new RuntimeException(e);
 
