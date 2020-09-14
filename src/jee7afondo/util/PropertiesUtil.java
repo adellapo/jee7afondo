@@ -21,7 +21,7 @@ public class PropertiesUtil {
 
 		Properties prop = new Properties();
 
-		String nombreArchivo = enUtil == true ? "./util/" + c.getSimpleName().toLowerCase() : "src/" + c.getName().toLowerCase().replace('.', '/');
+		String nombreArchivo = "C:\\tools\\Projects\\jee7afondo\\util\\DataAccess";
 		
 		try {
 
