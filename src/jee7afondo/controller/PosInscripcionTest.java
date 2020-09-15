@@ -12,12 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import jee7afondo.dto.InscripcionDTO;
 import jee7afondo.facade.Facade;
 
-/**
- * Servlet implementation class PosInscripcion
- */
-@WebServlet("/posInscripcion")
-public class PosInscripcion extends HttpServlet {
+@WebServlet("/test/posInscripcion")
+public class PosInscripcionTest extends HttpServlet {
 	
+	// atributos
 	String nombre;
 	String tel;
 	String curso;
@@ -25,27 +23,23 @@ public class PosInscripcion extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public PosInscripcion() {
+	public PosInscripcionTest() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// obtengo el PrintWriter
 		PrintWriter pw = response.getWriter();
 
+		// obtengo los atributos nombre, tel, curso y formaPago
 		nombre = request.getParameter("nomIns");
 		tel = request.getParameter("telIns");
 		curso = request.getParameter("curIns");
 		formaPago = request.getParameter("forPagIns");
 
+		// pagina para confirmar
 		pw.println("<html><body>");
 		pw.println("<h4>--- Datos Inscripción ---</h4>");
 		pw.println("<p>Nombre: " + nombre + "</p>");
@@ -59,29 +53,42 @@ public class PosInscripcion extends HttpServlet {
 		pw.println("</form");
 		pw.println("</body></html>");
 
+		// cierro
+		pw.close();
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		int newId;
-		
+
 		Facade f = new Facade();
-		
+
+		// creo la nueva inscripcion
 		InscripcionDTO inscripcion = new InscripcionDTO();
+		
+		// le establezco las propiedades
 		inscripcion.setNombre(nombre);
 		inscripcion.setTelefono(tel);
 		inscripcion.setIdCurso(Integer.parseInt(curso));
 		inscripcion.setIdFormaPago(Integer.parseInt(formaPago));
-
+		
+		// obtengo el nuevo ID de inscripcion
 		newId = f.registrarInscripcion(inscripcion);
 		
+		// obtengo PrintWriter
 		PrintWriter pw = response.getWriter();
-		pw.println("<html><body><h2>INSCRIPCINO OK : " +newId + "</h2></body></html>");
+		
+		// pagina
+		pw.println("<html><body>");
+		pw.println("<h2>Inscripción recibida.</h2>");
+		pw.println("<br>");
+		pw.println("<hr>");
+		pw.println("<p>ID Inscripción: " + newId + "</p>");
+		pw.println("</body></html>");
+
+		// cierro
 		pw.close();
 		
 	}

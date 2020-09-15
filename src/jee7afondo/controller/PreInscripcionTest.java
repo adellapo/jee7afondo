@@ -14,31 +14,27 @@ import jee7afondo.dto.CursoDTO;
 import jee7afondo.dto.FormaPagoDTO;
 import jee7afondo.facade.Facade;
 
-/**
- * Servlet implementation class PreInscripcion
- */
-@WebServlet("/preInscripcion")
-public class PreInscripcion extends HttpServlet {
+@WebServlet("/test/preInscripcion")
+public class PreInscripcionTest extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public PreInscripcion() {
+	public PreInscripcionTest() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// obtengo el PrintWriter
 		PrintWriter pw = response.getWriter();
+		
+		// obtengo el punto de acceso al modelo
 		Facade f = new Facade();
+		
+		// le pido la listas necesarias al modelo
 		List<CursoDTO> cursos = f.obtenerCursos();
+		
 		List<FormaPagoDTO>formasPago = f.obtenerFormasPago();
 		
 		// pagina
@@ -99,6 +95,9 @@ public class PreInscripcion extends HttpServlet {
 
 		pw.println("</table>");
 
+		pw.println("</body></html>");
+		
+		// cierro
 		pw.close();
 		
 	}
