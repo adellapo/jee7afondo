@@ -1,4 +1,4 @@
-package jee7afondo.controller;
+package jee7afondo.test.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
